@@ -4,7 +4,7 @@ import json
 from sklearn.preprocessing import StandardScaler
 
 def predict(mq7, mq135):
-  model = tf.keras.models.load_model('gas.h5')
+  model = tf.keras.models.load_model('gas_new.h5')
   df = pd.read_csv('Gas_Sensors_Measurements_value.csv')
   data = df.drop(['Serial Number','MQ2', 'MQ3', 'MQ5', 'MQ6', 'MQ8', 'Corresponding Image Name'], axis=1)
 
@@ -17,7 +17,7 @@ def predict(mq7, mq135):
   data_test = pd.DataFrame(data_test, columns=df_test.columns)
 
   pred = model.predict(data_test)
-  kelas = ['No Gas', 'Perfume', 'Smoke', 'Mixture']
+  kelas = ['No Gas', 'Smoke', 'Mixture']
 
   return json.dumps({"hasil": str(kelas[pred.argmax()])})
 
