@@ -13,6 +13,7 @@ def home():
 @app.route('/predict', methods = ['GET', 'POST'])
 def cek():
   if request.method == 'POST':
+    # return "asd"
     # f = request.files['file']
     # f.save(secure_filename(f.filename))
     # mq7 = request.form['mq7']
@@ -21,6 +22,7 @@ def cek():
     data = request.get_json()
     mq7 = data['mq7']
     mq135 = data['mq135']
+    # return data
     return model.predict(mq7, mq135)
 
 if __name__ == "__name__":

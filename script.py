@@ -17,7 +17,7 @@ def predict(mq7, mq135):
   data_test = pd.DataFrame(data_test, columns=df_test.columns)
 
   pred = model.predict(data_test)
-  kelas = ['No Gas', 'Smoke', 'Mixture']
+  kelas = ['No Gas', 'Smoke' ,'Mixture']
 
   return json.dumps({"hasil": str(kelas[pred.argmax()])})
 
